@@ -63,7 +63,7 @@ TARGET := $(BUILDDIR)/mycc
 TEST_SRCS := $(wildcard tests/unit/*.c)
 TEST_BINS := $(TEST_SRCS:tests/unit/%.c=$(BUILDDIR)/tests/%)
 
-.PHONY: all clean test test-unit test-integration install
+.PHONY: all clean test test-boundary test-unit test-integration install
 
 all: $(TARGET)
 
@@ -103,7 +103,10 @@ test-integration: $(TARGET)
 	@echo "=== Running integration tests ==="
 	@bash tests/run_tests.sh $(TARGET)
 
-test: test-unit test-integration
+test-boundary:
+	python3 scripts/validate_tool_boundary.py
+
+test: test-boundary test-unit test-integration
 
 clean:
 	rm -rf build

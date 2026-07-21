@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "decision": "retain-as-internal-tool",
+  "kind": "experimental-c11-compiler-cli",
+  "application_intended": false,
+  "owner": "Erol Akarsu",
+  "security_patch_owner": "Erol Akarsu",
+  "repository": "https://github.com/eakarsu/ccompiler",
+  "supported_baseline": {
+    "git_commit": "b0443a2a518e84641e4e5f4c8ffd6b359a57e46a",
+    "source_manifest_sha256": "a7d27d2c77541c65f90414ca1f81f8c343c5a0ff7d06557b7cf9ec3fa95e5c5e"
+  },
+  "supported_entry_points": {
+    "build": "make",
+    "test": "make test",
+    "cli": "build/debug/mycc"
+  },
+  "supported_scope": [
+    "project-owned C compiler frontend, SSA IR, optimization passes, and host backend",
+    "command-line compilation exercised by tests/integration",
+    "debug, release, and sanitizer build modes defined by Makefile"
+  ],
+  "excluded_scope": [
+    "web application or network service",
+    "sandboxing of compiler inputs or generated programs",
+    "compatibility beyond behavior exercised by the checked-in test suite",
+    "root HTML and assembly diagnostic artifacts as release products"
+  ],
+  "update_strategy": "Owner-reviewed commits; run make test for every change; update this baseline when intentionally cutting an internal release; independently review any imported third-party code.",
+  "release_status": "blocked-pending-license",
+  "license": {
+    "status": "not-declared",
+    "policy": "No external distribution or product extraction until the owner adds an explicit license."
+  }
+}
